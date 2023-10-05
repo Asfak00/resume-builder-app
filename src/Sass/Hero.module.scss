@@ -1,0 +1,70 @@
+@import "./mixin";
+@import "./variable";
+
+.hero_section {
+  width: 100%;
+  @include responsive_width_set;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 2rem;
+  @include md {
+    margin-top: 0;
+    flex-direction: row;
+  }
+  gap: 30px;
+  padding: 0 1rem;
+  @include md {
+    padding: 0 2rem;
+  }
+
+  .hero_left {
+    width: 100%;
+    @include sm {
+      width: 60%;
+    }
+    @include md {
+      width: 50%;
+    }
+    color: $primary-color;
+    h1 {
+      font-size: 3rem;
+      @include md {
+        font-size: 4.5rem;
+      }
+      text-shadow: 1px 1px 1px #7a7a7a;
+    }
+
+    p {
+      @include md {
+        width: 80%;
+      }
+      font-size: 1rem;
+      color: #7a7a7a;
+    }
+  }
+
+  button {
+    @include blackBtn($primary-color, $secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 30px;
+    &:hover {
+      background-color: transparent;
+      color: $primary-color;
+    }
+  }
+
+  img {
+    width: 100%;
+    @include sm {
+      width: 60%;
+    }
+    @include md {
+      width: 500px;
+    }
+    margin-top: 4rem;
+  }
+}

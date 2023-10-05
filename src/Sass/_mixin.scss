@@ -1,0 +1,44 @@
+// varible file import
+@import "./variable";
+
+// SMALL DEVICES
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// MEDIUM DEVICES
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// for max width website
+@mixin responsive_width_set {
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+}
+
+// for button
+@mixin blackBtn($backgroundColor, $textColor) {
+  padding: 0.5rem 0.7rem;
+  @include md {
+    padding: 0.6rem 0.9rem;
+  }
+  border: 1px solid $backgroundColor;
+  outline: none;
+  color: $textColor;
+  border-radius: 4px;
+  background-color: $backgroundColor;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}

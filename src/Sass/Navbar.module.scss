@@ -1,0 +1,42 @@
+// variable file import
+@import "./variable";
+
+// mixin file import
+@import "./mixin";
+
+nav {
+  @include responsive_width_set;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: $secondary-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  @include md {
+    padding: 2rem 2rem;
+  }
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+
+  img {
+    width: 100px;
+    @include md {
+      width: 120px;
+    }
+    cursor: pointer;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    a {
+      @include blackBtn($primary-color, $secondary-color);
+      &:hover {
+        background-color: transparent;
+        color: $primary-color;
+      }
+    }
+  }
+}

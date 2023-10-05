@@ -1,11 +1,23 @@
 import React from "react";
 
+// react router dom
+import { Routes, Route } from "react-router-dom";
+
+// pages components
+import HomePage from "./Pages/HomePage";
+import CreateResumePage from "./Pages/CreateResumePage";
+
+// reset style file
+import "./Sass/_reset.scss";
+
 const App = () => {
   return (
-    <div className="testing">
-      App
-      <div className="nesting">this is nesting</div>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/create" element={<CreateResumePage />} />
+      </Routes>
+    </>
   );
 };
 
