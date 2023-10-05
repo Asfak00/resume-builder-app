@@ -1,8 +1,23 @@
-# React + Vite
+# Resume Builder App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What can you add to this resume?
 
-Currently, two official plugins are available:
+<ul>
+    <li>Your Picture</li>
+    <li>Basic Information</li>
+    <li>Summary</li>
+    <li>Work Experience</li>
+    <li>Education</li>
+    <li>Skill</li>
+    <li>Projects</li>
+    <li>Achievements</li>
+    <li>Others</li>
+</ul>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What you get to customize?
+
+<ul>
+    <li>All Form Information</li>
+    <li>Font Color</li>
+    <li>Section Transfer</li>
+</ul>
