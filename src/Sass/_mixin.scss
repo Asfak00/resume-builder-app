@@ -42,3 +42,28 @@
   gap: 10px;
   cursor: pointer;
 }
+
+// tooltip
+@mixin tooltip($width: auto) {
+  width: $width;
+  background-color: rgb(128, 128, 128);
+  color: #fff;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 888;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+// presets
+@mixin preset {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ff00bf;
+  color: #ff00bf;
+  border: none;
+  outline: none;
+}

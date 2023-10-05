@@ -1,0 +1,39 @@
+@import "./variable";
+@import "./mixin";
+
+.sidebar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem 2rem;
+  gap: 30px;
+  @include responsive_width_set;
+
+  a {
+    font-size: 2rem;
+    color: $primary-color;
+    position: relative;
+
+    .tooltip1 {
+      @include tooltip(85px);
+      display: none;
+    }
+
+    .tooltip3 {
+      @include tooltip;
+      display: none;
+    }
+  }
+
+  .font_color:hover {
+    .tooltip1 {
+      display: block;
+    }
+  }
+
+  .download:hover {
+    .tooltip3 {
+      display: block;
+    }
+  }
+}

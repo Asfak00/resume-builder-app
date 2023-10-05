@@ -9,7 +9,12 @@ import banner from "../../assets/banner.png";
 // react icons
 import { MdOutlineLibraryAdd } from "react-icons/md";
 
+// react router dom
+import { useNavigate } from "react-router-dom";
+
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.hero_section}>
       <div className={styles.hero_left}>
@@ -20,7 +25,7 @@ const Hero = () => {
           your choice for the font add photos if you want and remove them if you
           don't want. So why delay try the app now.
         </p>
-        <button>
+        <button onClick={() => navigate("/create-resume")}>
           <MdOutlineLibraryAdd size={15} />
           create resume
         </button>

@@ -1,0 +1,21 @@
+@import "./mixin";
+@import "./variable";
+
+.form_navigation {
+  width: 100%;
+  @include responsive_width_set;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  .tab {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+}
+
+.active {
+  border-bottom: 2px solid #0098fd;
+  color: #0098fd;
+}

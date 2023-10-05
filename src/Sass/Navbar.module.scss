@@ -12,6 +12,7 @@ nav {
   left: 0;
   background-color: $secondary-color;
   display: flex;
+  z-index: 999;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;

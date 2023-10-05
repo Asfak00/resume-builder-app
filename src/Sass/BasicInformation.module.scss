@@ -1,0 +1,46 @@
+@import "./mixin";
+@import "./variable";
+
+.BasicInformation {
+  width: 80%;
+  @include responsive_width_set;
+  padding: 1rem 2rem;
+
+  .picture_upload {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-size: cover;
+    background-color: rgba(128, 128, 128, 0.24);
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-size: cover;
+    }
+
+    .add_photo {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      background-color: rgb(133, 133, 133);
+      color: rgb(255, 255, 255);
+      border-radius: 50%;
+      font-size: 2.3rem;
+      padding: 0.4rem;
+      z-index: 200;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+
+      &:active {
+        scale: 0.9;
+      }
+    }
+
+    .file_input {
+      display: none;
+    }
+  }
+}

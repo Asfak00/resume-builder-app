@@ -1,0 +1,70 @@
+@import "./mixin";
+@import "./variable";
+
+.font_color {
+  width: 100%;
+  @include responsive_width_set;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .preset {
+    @include preset;
+  }
+
+  .preset1 {
+    background-color: #00a9ff;
+    color: #00a9ff;
+  }
+
+  .preset2 {
+    background-color: #00b533;
+    color: #00b533;
+  }
+
+  .preset3 {
+    background-color: #ff00ff;
+    color: #ff00ff;
+  }
+
+  .preset4 {
+    background-color: #ff8c00;
+    color: #ff8c00;
+  }
+  .preset5 {
+    background-color: #00e5ff;
+    color: #00e5ff;
+  }
+  .preset6 {
+    background-color: #ffe900;
+    color: #ffe900;
+  }
+
+  .mutli_color {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+
+    input {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      // background-color: #ff00bf;
+      // color: #ff00bf;
+      border: none;
+      outline: none;
+      z-index: 99;
+      cursor: pointer;
+    }
+
+    .picker_btn {
+      position: absolute;
+      top: 30%;
+      left: 25%;
+      color: $secondary-color;
+    }
+  }
+}
