@@ -18,7 +18,7 @@ const SubMenu = ({ setActive, active }) => {
       </Link>
 
       <Link className={styles.download} onClick={() => setActive(3)}>
-        <BiSolidDownload />
+        <BiSolidDownload size={28} />
         <div className={styles.tooltip3}>Download</div>
       </Link>
     </div>

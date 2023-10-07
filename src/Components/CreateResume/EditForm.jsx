@@ -3,9 +3,29 @@ import React, { useState } from "react";
 // styles
 import styles from "../../Sass/EditForm.module.scss";
 import BasicInformation from "./BasicInformation";
+import Education from "./Education";
+import { EducationContext } from "../../Context/EducationContext";
+import { BasicInfoContext } from "../../Context/BasicInfoContext";
 
 const EditForm = ({ setFontColorActive }) => {
   const [active, setActive] = useState(1);
+
+  // basic info tab
+  const [basicInfo, setBasicInfo] = useState({
+    image: "",
+    name: "",
+    title: "",
+    website: "",
+    email: "",
+    address: "",
+    phoneNumber: "",
+  });
+
+  // education tab
+  const [education, setEducation] = useState([]);
+
+  console.log(education);
+
   return (
     <>
       <div
@@ -48,7 +68,16 @@ const EditForm = ({ setFontColorActive }) => {
         </div>
       </div>
 
-      {active === 1 && <BasicInformation />}
+      {active === 1 && (
+        <BasicInfoContext.Provider value={{ basicInfo, setBasicInfo }}>
+          <BasicInformation />
+        </BasicInfoContext.Provider>
+      )}
+      {active === 2 && (
+        <EducationContext.Provider value={{ education, setEducation }}>
+          <Education />
+        </EducationContext.Provider>
+      )}
     </>
   );
 };
