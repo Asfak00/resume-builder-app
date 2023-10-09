@@ -4,7 +4,10 @@
 .form_navigation {
   width: 100%;
   @include responsive_width_set;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
+  @include md {
+    padding: 1rem 2rem;
+  }
   display: flex;
   align-items: center;
   flex-wrap: wrap;

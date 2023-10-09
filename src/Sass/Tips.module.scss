@@ -13,7 +13,10 @@
   line-height: 20px;
   gap: 0.5rem;
   @include responsive_width_set;
-  width: 95%;
+  width: 92%;
+  @include md {
+    width: 95%;
+  }
   border-radius: 3px;
   margin-bottom: 1rem;
 
