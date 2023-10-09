@@ -24,7 +24,7 @@
 
 // for button
 @mixin blackBtn($backgroundColor, $textColor) {
-  padding: 0.5rem 0.7rem;
+  padding: 0.6rem 0.7rem;
   @include md {
     padding: 0.6rem 0.9rem;
   }
