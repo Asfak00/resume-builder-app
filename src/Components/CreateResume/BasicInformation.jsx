@@ -8,6 +8,8 @@ import { TbCameraPlus } from "react-icons/tb";
 
 // image
 import image from "../../assets/image.jpg";
+
+// context file
 import { BasicInfoContext } from "../../Context/BasicInfoContext";
 
 const BasicInformation = () => {
@@ -18,6 +20,7 @@ const BasicInformation = () => {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phoneNumber, setPhoneNumber] = useState();
+
   // handleImageChange
   const handleImageChange = (e) => {
     e.preventDefault();
@@ -29,6 +32,7 @@ const BasicInformation = () => {
   // context
   const { basicInfo, setBasicInfo } = useContext(BasicInfoContext);
 
+  // handle submit form
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBasicInfo = {

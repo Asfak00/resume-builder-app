@@ -2,13 +2,23 @@
 @import "./variable";
 
 .BasicInformation {
-  width: 80%;
+  width: 100%;
   @include responsive_width_set;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
+  margin-top: 2rem;
+  @include md {
+    margin-top: 0rem;
+    padding: 1rem 2rem;
+    width: 80%;
+  }
 
   .picture_upload {
     width: 200px;
     height: 200px;
+    margin-bottom: 2rem;
+    @include md {
+      margin-bottom: 0rem;
+    }
     border-radius: 50%;
     background-size: cover;
     background-color: rgba(128, 128, 128, 0.24);
@@ -45,24 +55,43 @@
   }
 
   .flex {
-    width: 75%;
+    width: 100%;
+    @include md {
+      width: 75%;
+    }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
+    @include md {
+      margin-top: 1rem;
+    }
 
-    input {
+    input,
+    textarea {
       width: 100%;
       padding: 0.6rem 0.4rem;
+      font-size: 0.9rem;
       border-radius: 3px;
-      margin-top: 0.2rem;
+      margin-top: 0.4rem;
+      margin-bottom: 1.2rem;
+      @include md {
+        margin-bottom: 0.5rem;
+      }
       outline: none;
       border: 1px solid rgb(131, 131, 131);
-      margin-bottom: 0.5rem;
+
       &:focus {
         border: 1px solid #0098fd;
         outline: 1px solid #0098fd;
       }
+    }
+
+    .widthFull {
+      width: 100%;
     }
 
     label {
@@ -70,16 +99,28 @@
     }
 
     .left {
-      width: 48%;
+      width: 100%;
+      @include md {
+        width: 48%;
+      }
     }
 
     .right {
-      width: 48%;
+      width: 100%;
+      @include md {
+        width: 48%;
+      }
+    }
+    textarea {
+      height: 150px;
     }
   }
 
   button {
     @include blackBtn($primary-color, $secondary-color);
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
+    @include md {
+      margin-top: 1.5rem;
+    }
   }
 }

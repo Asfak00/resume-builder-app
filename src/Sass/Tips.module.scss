@@ -1,0 +1,31 @@
+@import "./mixin";
+
+.tipsContainer {
+  padding: 0.5rem;
+  @include md {
+    padding: 1rem;
+  }
+  background-color: rgba(250, 198, 87, 0.103);
+  color: rgb(133, 64, 0);
+  display: flex;
+  word-spacing: 2px;
+  align-items: center;
+  gap: 0.5rem;
+  @include responsive_width_set;
+  width: 95%;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+
+  font-size: 0.9rem;
+
+  @include md {
+    font-size: 1.1rem;
+  }
+
+  .icon {
+    font-size: 5rem;
+    @include md {
+      font-size: 1.5rem;
+    }
+  }
+}

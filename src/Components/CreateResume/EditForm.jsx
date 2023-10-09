@@ -1,30 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 // styles
 import styles from "../../Sass/EditForm.module.scss";
+
+// components
 import BasicInformation from "./BasicInformation";
 import Education from "./Education";
-import { EducationContext } from "../../Context/EducationContext";
-import { BasicInfoContext } from "../../Context/BasicInfoContext";
+import Experience from "./Experience";
+import Summary from "./Summary";
+import Projects from "./Projects";
+import Language from "./Language";
+import Skill from "./Skill";
 
 const EditForm = ({ setFontColorActive }) => {
   const [active, setActive] = useState(1);
-
-  // basic info tab
-  const [basicInfo, setBasicInfo] = useState({
-    image: "",
-    name: "",
-    title: "",
-    website: "",
-    email: "",
-    address: "",
-    phoneNumber: "",
-  });
-
-  // education tab
-  const [education, setEducation] = useState([]);
-
-  console.log(education);
 
   return (
     <>
@@ -39,45 +28,56 @@ const EditForm = ({ setFontColorActive }) => {
         <div
           className={`${styles.tab} ${active === 2 && styles.active}`}
           onClick={() => setActive(2)}>
-          <h3>Education</h3>
+          <h3>Summary</h3>
         </div>
+
         <div
           className={`${styles.tab} ${active === 3 && styles.active}`}
           onClick={() => setActive(3)}>
-          <h3>Work Experience</h3>
+          <h3>Education</h3>
         </div>
         <div
           className={`${styles.tab} ${active === 4 && styles.active}`}
           onClick={() => setActive(4)}>
-          <h3>Skill</h3>
+          <h3>Work Experience</h3>
         </div>
         <div
           className={`${styles.tab} ${active === 5 && styles.active}`}
           onClick={() => setActive(5)}>
-          <h3>Projects</h3>
+          <h3>Skill</h3>
         </div>
         <div
           className={`${styles.tab} ${active === 6 && styles.active}`}
           onClick={() => setActive(6)}>
-          <h3>Achievements</h3>
+          <h3>Projects</h3>
         </div>
         <div
           className={`${styles.tab} ${active === 7 && styles.active}`}
           onClick={() => setActive(7)}>
-          <h3>Others</h3>
+          <h3>Language</h3>
         </div>
       </div>
 
-      {active === 1 && (
-        <BasicInfoContext.Provider value={{ basicInfo, setBasicInfo }}>
-          <BasicInformation />
-        </BasicInfoContext.Provider>
-      )}
-      {active === 2 && (
-        <EducationContext.Provider value={{ education, setEducation }}>
-          <Education />
-        </EducationContext.Provider>
-      )}
+      {/* basic information */}
+      {active === 1 && <BasicInformation />}
+
+      {/* summary */}
+      {active === 2 && <Summary />}
+
+      {/* education */}
+      {active === 3 && <Education />}
+
+      {/* experience  */}
+      {active === 4 && <Experience />}
+
+      {/* skill */}
+      {active === 5 && <Skill />}
+
+      {/* Projects */}
+      {active === 6 && <Projects />}
+
+      {/* Language */}
+      {active === 7 && <Language />}
     </>
   );
 };

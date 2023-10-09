@@ -19,6 +19,11 @@
       display: none;
     }
 
+    .tooltip2 {
+      @include tooltip(105px);
+      display: none;
+    }
+
     .tooltip3 {
       @include tooltip;
       display: none;
@@ -27,6 +32,12 @@
 
   .font_color:hover {
     .tooltip1 {
+      display: block;
+    }
+  }
+
+  .font_color:hover {
+    .tooltip2 {
       display: block;
     }
   }
