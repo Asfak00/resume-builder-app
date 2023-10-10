@@ -1,0 +1,253 @@
+.resumePreview {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #00000080;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem 0;
+
+  .crossIcon {
+    width: 100%;
+    max-width: 950px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+
+    p {
+      width: 40px;
+      height: 40px;
+      padding: 0.5rem;
+      background-color: #ffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  }
+
+  .resume {
+    background-color: #ffff;
+    max-width: 950px;
+    padding: 3rem;
+    min-height: 800px;
+    height: auto;
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    // top section
+    .topSection {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 120px;
+
+      img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+      }
+
+      .topNameSection {
+        width: 70%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.521);
+        padding-bottom: 1rem;
+        letter-spacing: 2px;
+        h1 {
+          font-size: 3rem;
+          text-transform: uppercase;
+        }
+
+        p {
+          font-size: 1.5rem;
+          color: rgb(0, 162, 255);
+        }
+      }
+    }
+
+    // second summary section
+    .summarySection {
+      width: 100%;
+      margin-top: 3rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 80px;
+
+      .address {
+        a {
+          color: #000;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-top: 0.5rem;
+          p {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+          }
+        }
+      }
+
+      .summary {
+        p {
+          text-align: justify;
+          line-height: 22px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    // education and experience section
+    .EduExperienceSection {
+      width: 100%;
+      margin-top: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 80px;
+      text-transform: capitalize;
+
+      .educationContainer {
+        width: 29%;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .education {
+          .eduDesc {
+            h1 {
+              font-size: 1.4rem;
+              font-weight: 500;
+              margin-bottom: 2rem;
+              letter-spacing: 1px;
+              margin-bottom: 0.4rem;
+            }
+
+            h2 {
+              font-size: 1rem;
+              font-weight: 400;
+              margin-bottom: 0.4rem;
+            }
+
+            h4 {
+              font-weight: 400;
+              font-size: 0.9rem;
+              margin-bottom: 0.7rem;
+            }
+          }
+        }
+
+        .skill {
+          p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .experience {
+        width: 70%;
+
+        .workDesc {
+          padding-left: 1rem;
+          margin-bottom: 2rem;
+          border-left: 5px solid rgba(0, 0, 0, 0.521);
+
+          h1 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+          }
+
+          h2 {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+          }
+
+          h4 {
+            font-weight: 400;
+            margin-bottom: 0.7rem;
+          }
+          p {
+            font-size: 0.9rem;
+            text-align: justify;
+            text-transform: none;
+          }
+        }
+      }
+    }
+
+    // language and project section
+    .langProjectSection {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 80px;
+      margin-top: 2rem;
+      text-transform: capitalize;
+
+      .language {
+        width: 29%;
+
+        p {
+          font-size: 1rem;
+          text-transform: capitalize;
+          font-weight: 500;
+          margin-bottom: 1rem;
+        }
+      }
+
+      .project {
+        width: 70%;
+
+        .projectDesc {
+          padding-left: 1rem;
+          margin-bottom: 2rem;
+          border-left: 5px solid rgba(0, 0, 0, 0.521);
+          h1 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .projectLinks {
+              display: flex;
+              gap: 10px;
+              a {
+                font-size: 0.8rem;
+                color: rgb(0, 162, 255);
+                text-decoration: underline;
+              }
+            }
+          }
+
+          p {
+            margin-top: 0.7rem;
+            font-size: 0.9rem;
+            text-transform: none;
+            text-align: justify;
+          }
+        }
+      }
+    }
+  }
+}
