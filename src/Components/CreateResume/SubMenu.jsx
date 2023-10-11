@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 // react icons
 import { BiFontColor, BiSolidDownload, BiSolidEditAlt } from "react-icons/bi";
@@ -12,17 +12,13 @@ import { Link } from "react-router-dom";
 
 // component
 import ResumeTemplete from "./Preview/ResumeTemplete";
-
-// context
-import { useContext } from "react";
-import { SkillContext } from "../../Context/SkillContext";
+import { FontColorContext } from "../../Context/FontColorContext";
 
 const SubMenu = ({ setActive, active }) => {
   const [preview, setPreview] = useState(false);
 
-  const { skill } = useContext(SkillContext);
-
-  console.log(skill);
+  const { fontColor } = useContext(FontColorContext);
+  console.log(fontColor);
 
   return (
     <>
@@ -35,11 +31,6 @@ const SubMenu = ({ setActive, active }) => {
         <Link className={styles.font_color} onClick={() => setActive(!active)}>
           <BiFontColor size={32} />
           <div className={styles.tooltip1}>Font Color</div>
-        </Link>
-
-        <Link className={styles.download} onClick={() => setActive(3)}>
-          <BiSolidDownload size={28} />
-          <div className={styles.tooltip3}>Download</div>
         </Link>
       </div>
 

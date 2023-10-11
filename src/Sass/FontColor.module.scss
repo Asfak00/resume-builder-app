@@ -11,6 +11,7 @@
 
   .preset {
     @include preset;
+    cursor: pointer;
   }
 
   .preset1 {
@@ -47,6 +48,7 @@
     position: relative;
     border-radius: 50%;
     overflow: hidden;
+    outline: none;
 
     input {
       width: 100%;

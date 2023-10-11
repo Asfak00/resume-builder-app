@@ -17,6 +17,7 @@
     max-width: 950px;
     display: flex;
     align-items: flex-end;
+    gap: 30px;
     justify-content: flex-end;
     margin-bottom: 1rem;
 
@@ -52,10 +53,10 @@
       width: 100%;
       display: flex;
       align-items: center;
-      gap: 105px;
+      gap: 90px;
 
       img {
-        width: 180px;
+        width: 220px;
         height: 180px;
         border-radius: 50%;
       }
@@ -73,7 +74,7 @@
         p {
           font-size: 1.5rem;
           text-transform: capitalize;
-          color: rgb(0, 162, 255);
+          // color: rgb(0, 162, 255);
         }
       }
     }
@@ -84,9 +85,10 @@
       margin-top: 3rem;
       display: flex;
       align-items: flex-start;
-      gap: 65px;
+      gap: 55px;
 
       .address {
+        width: 29%;
         a {
           color: #000;
           display: flex;
@@ -104,6 +106,7 @@
       }
 
       .summary {
+        width: 70%;
         p {
           text-align: justify;
           line-height: 22px;
@@ -235,7 +238,7 @@
               gap: 10px;
               a {
                 font-size: 0.8rem;
-                color: rgb(0, 162, 255);
+                // color: rgb(0, 162, 255);
                 text-decoration: underline;
               }
             }

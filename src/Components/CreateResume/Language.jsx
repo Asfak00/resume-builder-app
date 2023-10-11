@@ -17,6 +17,7 @@ const Language = () => {
     e.preventDefault();
 
     const makeLanguage = newLanguage;
+    setLanguage((prevLang) => [...prevLang, makeLanguage]);
   };
   return (
     <div className={`${styles.BasicInformation}`}>

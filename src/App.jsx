@@ -18,6 +18,7 @@ import { SummaryContext } from "./Context/SummaryContext";
 import { SkillContext } from "./Context/SkillContext";
 import { ProjectsContext } from "./Context/ProjectsContext";
 import { LanguageContext } from "./Context/LanguageContext";
+import { FontColorContext } from "./Context/FontColorContext";
 
 const App = () => {
   // basic info tab
@@ -49,6 +50,9 @@ const App = () => {
   // language
   const [language, setLanguage] = useState([]);
 
+  // colors for font
+  const [fontColor, setFontColor] = useState("");
+
   return (
     <BrowserRouter>
       <Routes>
@@ -65,7 +69,10 @@ const App = () => {
                       <ProjectsContext.Provider value={{ project, setProject }}>
                         <LanguageContext.Provider
                           value={{ language, setLanguage }}>
-                          <CreateResumePage />
+                          <FontColorContext.Provider
+                            value={{ fontColor, setFontColor }}>
+                            <CreateResumePage />
+                          </FontColorContext.Provider>
                         </LanguageContext.Provider>
                       </ProjectsContext.Provider>
                     </SkillContext.Provider>

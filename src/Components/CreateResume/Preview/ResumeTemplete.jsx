@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 
 // styles
 import styles from "../../../Sass/ResumeTemplete.module.scss";
 
 // image
 import image from "../../../assets/image.jpg";
+
+// importing html2canvas and jspdf
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 // icons
 import { IoLocationSharp } from "react-icons/io5";
@@ -19,6 +23,11 @@ import { BasicInfoContext } from "../../../Context/BasicInfoContext";
 import { SummaryContext } from "../../../Context/SummaryContext";
 import { EducationContext } from "../../../Context/EducationContext";
 import { SkillContext } from "../../../Context/SkillContext";
+import { ExperienceContext } from "../../../Context/ExperienceContext";
+import { LanguageContext } from "../../../Context/LanguageContext";
+import { ProjectsContext } from "../../../Context/ProjectsContext";
+import { FontColorContext } from "../../../Context/FontColorContext";
+import { BiSolidDownload } from "react-icons/bi";
 
 const ResumeTemplete = ({ setPreview, preview }) => {
   // all context
@@ -26,15 +35,39 @@ const ResumeTemplete = ({ setPreview, preview }) => {
   const { summary } = useContext(SummaryContext);
   const { education } = useContext(EducationContext);
   const { skill } = useContext(SkillContext);
+  const { experience } = useContext(ExperienceContext);
+  const { language } = useContext(LanguageContext);
+  const { project } = useContext(ProjectsContext);
+  const { fontColor } = useContext(FontColorContext);
+
+  // useref
+  const pdfRef = useRef();
+
+  const donwloadPDF = () => {
+    const capture = document.querySelector(".resume");
+    html2canvas(capture).then((canvas) => {
+      const imgData = canvas.toDataURL("img/png");
+      const doc = new jsPDF();
+      const componentWidth = doc.internal.pageSize.getWidth();
+      const componentHeight = doc.internal.pageSize.getHeight();
+      doc.addImage(imgData, "PNG", 0, 0, componentWidth, componentHeight);
+
+      doc.save(`${basicInfo.name ? basicInfo.name : "asfakahmed"}.pdf`);
+    });
+  };
 
   return (
     <div className={styles.resumePreview}>
       <div className={styles.crossIcon} onClick={() => setPreview(false)}>
+        <p onClick={donwloadPDF}>
+          <BiSolidDownload size={28} />
+        </p>
+
         <p>
           <RxCross1 />
         </p>
       </div>
-      <div className={styles.resume}>
+      <div className={`${styles.resume} resume`} ref={pdfRef}>
         {/* top name and picture section */}
         <div className={styles.topSection}>
           <img
@@ -43,7 +76,9 @@ const ResumeTemplete = ({ setPreview, preview }) => {
           />
           <div className={styles.topNameSection}>
             <h1>{basicInfo.name ? basicInfo.name : "Asfak Ahmed"}</h1>
-            <p>{basicInfo.title ? basicInfo.title : "Front-End Developer"}</p>
+            <p style={{ color: fontColor ? fontColor : "#00aae2" }}>
+              {basicInfo.title ? basicInfo.title : "Front-End Developer"}
+            </p>
           </div>
         </div>
 
@@ -52,7 +87,10 @@ const ResumeTemplete = ({ setPreview, preview }) => {
           <div className={styles.address}>
             <a href={basicInfo.phoneNumber ? basicInfo.phoneNumber : "#"}>
               <p>
-                <IoIosCall />
+                <IoIosCall
+                  className={styles.icon}
+                  style={{ color: fontColor ? fontColor : "#00aae2" }}
+                />
                 {basicInfo.phoneNumber
                   ? basicInfo.phoneNumber
                   : "+8801305282768"}
@@ -63,7 +101,10 @@ const ResumeTemplete = ({ setPreview, preview }) => {
                 basicInfo.email ? basicInfo.email : "asfakahmed680@gmail.com"
               }`}>
               <p>
-                <MdEmail />
+                <MdEmail
+                  className={styles.icon}
+                  style={{ color: fontColor ? fontColor : "#00aae2" }}
+                />
                 {basicInfo.email ? basicInfo.email : "asfakahmed680@gmail.com"}
               </p>
             </a>
@@ -74,7 +115,10 @@ const ResumeTemplete = ({ setPreview, preview }) => {
                   : "https://asfakahmed.netlify.app/"
               }>
               <p>
-                <TbWorld />
+                <TbWorld
+                  className={styles.icon}
+                  style={{ color: fontColor ? fontColor : "#00aae2" }}
+                />
                 {basicInfo.website
                   ? basicInfo.website
                   : "https://asfakahmed.netlify.app/"}
@@ -82,7 +126,10 @@ const ResumeTemplete = ({ setPreview, preview }) => {
             </a>
             <a href={basicInfo.address ? basicInfo.address : "#"}>
               <p>
-                <IoLocationSharp />
+                <IoLocationSharp
+                  className={styles.icon}
+                  style={{ color: fontColor ? fontColor : "#00aae2" }}
+                />
                 {basicInfo.address ? basicInfo.address : "Sylhet, Bangladesh"}
               </p>
             </a>
@@ -147,35 +194,53 @@ const ResumeTemplete = ({ setPreview, preview }) => {
           {/* experience */}
           <div className={styles.experience}>
             <h3>Work Experience</h3>
-            <div className={styles.workDesc}>
-              <h1>Goatmoves.inc</h1>
-              <h2>Front-End Web Developer</h2>
-              <h4>
-                <span>20-10-2023</span> - <span>present</span>
-              </h4>
 
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                quod dignissimos facere maiores soluta fugiat explicabo eum
-                laudantium obcaecati error blanditiis minima placeat aut, at
-                quisquam ratione perspiciatis ipsum labore deserunt nesciunt
-              </p>
-            </div>
+            {experience.length !== 0 ? (
+              experience.map((exp, index) => (
+                <div className={styles.workDesc} key={index}>
+                  <h1>{exp.companyName}</h1>
+                  <h2>{exp.jobTitle}</h2>
+                  <h4>
+                    <span>{exp.startData}</span> - <span>{exp.endDate}</span>
+                  </h4>
+                  <p>{exp.Description}</p>
+                </div>
+              ))
+            ) : (
+              <>
+                <div className={styles.workDesc}>
+                  <h1>Goatmoves.inc</h1>
+                  <h2>Front-End Web Developer</h2>
+                  <h4>
+                    <span>20-10-2023</span> - <span>present</span>
+                  </h4>
 
-            <div className={styles.workDesc}>
-              <h1>Goatmoves.inc</h1>
-              <h2>Front-End Web Developer</h2>
-              <h4>
-                <span>20-10-2023</span> - <span>present</span>
-              </h4>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Tenetur quod dignissimos facere maiores soluta fugiat
+                    explicabo eum laudantium obcaecati error blanditiis minima
+                    placeat aut, at quisquam ratione perspiciatis ipsum labore
+                    deserunt nesciunt
+                  </p>
+                </div>
 
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                quod dignissimos facere maiores soluta fugiat explicabo eum
-                laudantium obcaecati error blanditiis minima placeat aut, at
-                quisquam ratione perspiciatis ipsum labore deserunt nesciunt
-              </p>
-            </div>
+                <div className={styles.workDesc}>
+                  <h1>Goatmoves.inc</h1>
+                  <h2>Front-End Web Developer</h2>
+                  <h4>
+                    <span>20-10-2023</span> - <span>present</span>
+                  </h4>
+
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Tenetur quod dignissimos facere maiores soluta fugiat
+                    explicabo eum laudantium obcaecati error blanditiis minima
+                    placeat aut, at quisquam ratione perspiciatis ipsum labore
+                    deserunt nesciunt
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
 
@@ -184,46 +249,96 @@ const ResumeTemplete = ({ setPreview, preview }) => {
           {/* language */}
           <div className={styles.language}>
             <h3>Language</h3>
-            <p>Bangla</p>
-            <p>English</p>
-            <p>Hindi</p>
+            {language.length !== 0 ? (
+              language.map((lang) => <p>{lang}</p>)
+            ) : (
+              <>
+                <p>Bangla</p>
+                <p>English</p>
+                <p>Hindi</p>
+              </>
+            )}
           </div>
 
           {/* projects */}
           <div className={styles.project}>
             <h3>Project</h3>
 
-            <div className={styles.projectDesc}>
-              <h1>
-                multi vendor e-commerce website
-                <div className={styles.projectLinks}>
-                  <a href="#">Live Link</a> <a href="#">Github Link</a>
+            {project.length !== 0 ? (
+              project.map((pro, index) => (
+                <div className={styles.projectDesc} key={index}>
+                  <h1>
+                    {pro.projectName}
+                    <div className={styles.projectLinks}>
+                      <a
+                        href={pro.liveLink}
+                        style={{ color: fontColor ? fontColor : "#00aae2" }}>
+                        Live Link
+                      </a>
+                      <a
+                        href={pro.githubLink}
+                        style={{ color: fontColor ? fontColor : "#00aae2" }}>
+                        Github Link
+                      </a>
+                    </div>
+                  </h1>
+
+                  <p>{pro.projectDescription}</p>
                 </div>
-              </h1>
+              ))
+            ) : (
+              <>
+                <div className={styles.projectDesc}>
+                  <h1>
+                    multi vendor e-commerce website
+                    <div className={styles.projectLinks}>
+                      <a
+                        href="#"
+                        style={{ color: fontColor ? fontColor : "#00aae2" }}>
+                        Live Link
+                      </a>{" "}
+                      <a
+                        href="#"
+                        style={{ color: fontColor ? fontColor : "#00aae2" }}>
+                        Github Link
+                      </a>
+                    </div>
+                  </h1>
 
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                dolorem vero quod dicta quidem laborum eos sunt perspiciatis
-                tenetur quasi ex asperiores ratione quis eum illum modi repellat
-                quibusdam nulla.
-              </p>
-            </div>
-
-            <div className={styles.projectDesc}>
-              <h1>
-                multi vendor e-commerce website
-                <div className={styles.projectLinks}>
-                  <a href="#">Live Link</a> <a href="#">Github Link</a>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Animi dolorem vero quod dicta quidem laborum eos sunt
+                    perspiciatis tenetur quasi ex asperiores ratione quis eum
+                    illum modi repellat quibusdam nulla.
+                  </p>
                 </div>
-              </h1>
 
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                dolorem vero quod dicta quidem laborum eos sunt perspiciatis
-                tenetur quasi ex asperiores ratione quis eum illum modi repellat
-                quibusdam nulla.
-              </p>
-            </div>
+                <div className={styles.projectDesc}>
+                  <h1>
+                    multi vendor e-commerce website
+                    <div className={styles.projectLinks}>
+                      <a
+                        href="#"
+                        style={{ color: fontColor ? fontColor : "#00aae2" }}>
+                        Live Link
+                      </a>{" "}
+                      <a
+                        href="#"
+                        style={{ color: fontColor ? fontColor : "#00aae2" }}>
+                        Github Link
+                      </a>
+                    </div>
+                  </h1>
+
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Animi dolorem vero quod dicta quidem laborum eos sunt
+                    perspiciatis tenetur quasi ex asperiores ratione quis eum
+                    illum modi repellat quibusdam nulla.
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
