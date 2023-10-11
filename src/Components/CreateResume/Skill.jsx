@@ -21,7 +21,6 @@ const Skill = () => {
     setSkill((prev) => [...prev, makeNewSkill]);
   };
 
-  console.log("from skill tab", skill);
   return (
     <div className={`${styles.BasicInformation}`}>
       <form onSubmit={(e) => handleSubmit(e)}>

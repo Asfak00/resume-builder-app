@@ -16,9 +16,9 @@ const Summary = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newSummary = newSummary;
+    const makeNewSummary = newSummary;
 
-    setSummary(newSummary);
+    setSummary(makeNewSummary);
   };
   return (
     <div className={`${styles.BasicInformation}`}>

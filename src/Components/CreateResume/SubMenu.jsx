@@ -13,8 +13,17 @@ import { Link } from "react-router-dom";
 // component
 import ResumeTemplete from "./Preview/ResumeTemplete";
 
+// context
+import { useContext } from "react";
+import { SkillContext } from "../../Context/SkillContext";
+
 const SubMenu = ({ setActive, active }) => {
   const [preview, setPreview] = useState(false);
+
+  const { skill } = useContext(SkillContext);
+
+  console.log(skill);
+
   return (
     <>
       <div className={styles.sidebar}>

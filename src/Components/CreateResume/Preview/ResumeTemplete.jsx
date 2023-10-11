@@ -13,7 +13,20 @@ import { TbWorld } from "react-icons/tb";
 import { MdEmail } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 
+// all context
+import { useContext } from "react";
+import { BasicInfoContext } from "../../../Context/BasicInfoContext";
+import { SummaryContext } from "../../../Context/SummaryContext";
+import { EducationContext } from "../../../Context/EducationContext";
+import { SkillContext } from "../../../Context/SkillContext";
+
 const ResumeTemplete = ({ setPreview, preview }) => {
+  // all context
+  const { basicInfo } = useContext(BasicInfoContext);
+  const { summary } = useContext(SummaryContext);
+  const { education } = useContext(EducationContext);
+  const { skill } = useContext(SkillContext);
+
   return (
     <div className={styles.resumePreview}>
       <div className={styles.crossIcon} onClick={() => setPreview(false)}>
@@ -24,49 +37,66 @@ const ResumeTemplete = ({ setPreview, preview }) => {
       <div className={styles.resume}>
         {/* top name and picture section */}
         <div className={styles.topSection}>
-          <img src={image} alt="author/image" />
+          <img
+            src={basicInfo.image ? basicInfo.image : image}
+            alt="author/image"
+          />
           <div className={styles.topNameSection}>
-            <h1>Asfak Ahmed</h1>
-            <p>Front-End Developer</p>
+            <h1>{basicInfo.name ? basicInfo.name : "Asfak Ahmed"}</h1>
+            <p>{basicInfo.title ? basicInfo.title : "Front-End Developer"}</p>
           </div>
         </div>
 
         {/* second address and summary section */}
         <div className={styles.summarySection}>
           <div className={styles.address}>
-            <a href="#">
+            <a href={basicInfo.phoneNumber ? basicInfo.phoneNumber : "#"}>
               <p>
                 <IoIosCall />
-                +8801305282768
+                {basicInfo.phoneNumber
+                  ? basicInfo.phoneNumber
+                  : "+8801305282768"}
               </p>
             </a>
-            <a href="mailto:asfakahmed680@gmail.com">
+            <a
+              href={`mailto:${
+                basicInfo.email ? basicInfo.email : "asfakahmed680@gmail.com"
+              }`}>
               <p>
                 <MdEmail />
-                asfakahmed680@gmail.com
+                {basicInfo.email ? basicInfo.email : "asfakahmed680@gmail.com"}
               </p>
             </a>
-            <a href="https://asfakahmed.netlify.app/">
+            <a
+              href={
+                basicInfo.website
+                  ? basicInfo.website
+                  : "https://asfakahmed.netlify.app/"
+              }>
               <p>
                 <TbWorld />
-                https://asfakahmed.netlify.app/
+                {basicInfo.website
+                  ? basicInfo.website
+                  : "https://asfakahmed.netlify.app/"}
               </p>
             </a>
-            <a href="#">
+            <a href={basicInfo.address ? basicInfo.address : "#"}>
               <p>
                 <IoLocationSharp />
-                Sylhet, Bangladesh
+                {basicInfo.address ? basicInfo.address : "Sylhet, Bangladesh"}
               </p>
             </a>
           </div>
           <div className={styles.summary}>
             <h3>Summary</h3>
             <p>
-              I am Asfak Ahmed. I am a front-end web developer. I have been
+              {summary
+                ? summary
+                : ` I am Asfak Ahmed. I am a front-end web developer. I have been
               working in this sector for the past 1+ years. I consider coding as
               the most important thing in my life. I love to tackle complex
               problems. I won 2nd runner's prize in " ProgrammingHeroweb
-              application showcase contest 2".
+              application showcase contest 2".`}
             </p>
           </div>
         </div>
@@ -77,22 +107,40 @@ const ResumeTemplete = ({ setPreview, preview }) => {
             {/* education */}
             <div className={styles.education}>
               <h3>Education</h3>
-              <div className={styles.eduDesc}>
-                <h1>higher secondary school certificate</h1>
-                <h2>Chhakapon High School & collage</h2>
-                <h4>
-                  <span>12-10-2018</span> - <span>10-03-2023</span>
-                </h4>
-              </div>
+              {education.length !== 0 ? (
+                education.map((edu, index) => (
+                  <div className={styles.eduDesc} key={index}>
+                    <h1>{edu.degree}</h1>
+                    <h2>{edu.institutionName}</h2>
+                    <h4>
+                      <span>{edu.startDate}</span> - <span>{edu.endDate}</span>
+                    </h4>
+                  </div>
+                ))
+              ) : (
+                <div className={styles.eduDesc}>
+                  <h1>higher secondary school certificate</h1>
+                  <h2>Chhakapon High School & collage</h2>
+                  <h4>
+                    <span>12-10-2018</span> - <span>10-03-2023</span>
+                  </h4>
+                </div>
+              )}
             </div>
 
             {/* skill */}
             <div className={styles.skill}>
               <h3>Skill</h3>
-              <p>Html</p>
-              <p>css</p>
-              <p>react</p>
-              <p>javascript</p>
+              {skill.length !== 0 ? (
+                skill.map((ele, index) => <p>{ele ? ele : "React"}</p>)
+              ) : (
+                <>
+                  <p>Html</p>
+                  <p>css</p>
+                  <p>react</p>
+                  <p>javascript</p>
+                </>
+              )}
             </div>
           </div>
 

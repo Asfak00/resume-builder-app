@@ -3,6 +3,7 @@
 
 .hero_section {
   width: 100%;
+  min-height: 90vh;
   @include responsive_width_set;
   display: flex;
   align-items: center;

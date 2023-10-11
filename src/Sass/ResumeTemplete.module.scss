@@ -36,7 +36,7 @@
 
   .resume {
     background-color: #ffff;
-    max-width: 950px;
+    width: 950px;
     padding: 3rem;
     min-height: 800px;
     height: auto;
@@ -52,7 +52,7 @@
       width: 100%;
       display: flex;
       align-items: center;
-      gap: 120px;
+      gap: 105px;
 
       img {
         width: 180px;
@@ -72,6 +72,7 @@
 
         p {
           font-size: 1.5rem;
+          text-transform: capitalize;
           color: rgb(0, 162, 255);
         }
       }
@@ -83,7 +84,7 @@
       margin-top: 3rem;
       display: flex;
       align-items: flex-start;
-      gap: 80px;
+      gap: 65px;
 
       .address {
         a {
@@ -117,7 +118,7 @@
       margin-top: 2rem;
       display: flex;
       align-items: flex-start;
-      gap: 80px;
+      gap: 55px;
       text-transform: capitalize;
 
       .educationContainer {
@@ -198,7 +199,7 @@
       width: 100%;
       display: flex;
       align-items: flex-start;
-      gap: 80px;
+      gap: 60px;
       margin-top: 2rem;
       text-transform: capitalize;
 

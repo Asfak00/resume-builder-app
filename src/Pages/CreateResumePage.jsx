@@ -6,6 +6,9 @@ import SubMenu from "../Components/CreateResume/SubMenu";
 import FontColor from "../Components/CreateResume/FontColor";
 import EditForm from "../Components/CreateResume/EditForm";
 import Tips from "../Components/CreateResume/Tips";
+import Footer from "../Components/Footer";
+import { useContext } from "react";
+import { BasicInfoContext } from "../Context/BasicInfoContext";
 
 const CreateResumePage = () => {
   const [active, setActive] = useState(false);
@@ -18,6 +21,7 @@ const CreateResumePage = () => {
       {active && <FontColor />}
 
       <EditForm setFontColorActive={setActive} />
+      <Footer />
     </>
   );
 };

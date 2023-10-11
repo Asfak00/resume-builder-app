@@ -1,0 +1,17 @@
+@import "./mixin";
+
+.footer {
+  width: 100%;
+  padding: 1.5rem;
+  box-shadow: -4px -4px 8px -4px rgba(0, 0, 0, 0.3);
+  @include responsive_width_set;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  font-size: 1.1rem;
+  justify-content: center;
+  text-transform: capitalize;
+  a {
+    color: rgb(0, 162, 255);
+  }
+}
