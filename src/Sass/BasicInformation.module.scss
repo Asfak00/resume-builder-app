@@ -61,7 +61,7 @@
       width: 75%;
     }
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     @include md {
@@ -110,6 +110,20 @@
       width: 100%;
       @include md {
         width: 48%;
+      }
+
+      .presentDiv {
+        width: 100%;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+
+        input {
+          width: 15px;
+          border: none;
+          outline: none;
+          cursor: pointer;
+        }
       }
     }
     textarea {

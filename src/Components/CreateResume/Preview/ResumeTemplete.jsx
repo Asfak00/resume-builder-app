@@ -67,6 +67,10 @@ const ResumeTemplete = ({ setPreview, preview }) => {
           <RxCross1 />
         </p>
       </div>
+
+      <div className={styles.worningText}>
+        <h3>Preview not available for mobile!</h3>
+      </div>
       <div className={`${styles.resume} resume`} ref={pdfRef}>
         {/* top name and picture section */}
         <div className={styles.topSection}>
@@ -160,7 +164,12 @@ const ResumeTemplete = ({ setPreview, preview }) => {
                     <h1>{edu.degree}</h1>
                     <h2>{edu.institutionName}</h2>
                     <h4>
-                      <span>{edu.startDate}</span> - <span>{edu.endDate}</span>
+                      <span>{edu.startData}</span> -{" "}
+                      <span>
+                        {edu.endDate === "" && edu.present
+                          ? "present"
+                          : edu.endDate}
+                      </span>
                     </h4>
                   </div>
                 ))
@@ -201,7 +210,12 @@ const ResumeTemplete = ({ setPreview, preview }) => {
                   <h1>{exp.companyName}</h1>
                   <h2>{exp.jobTitle}</h2>
                   <h4>
-                    <span>{exp.startData}</span> - <span>{exp.endDate}</span>
+                    <span>{exp.startData}</span> -{" "}
+                    <span>
+                      {exp.endDate === "" && exp.present
+                        ? "present"
+                        : exp.endDate}
+                    </span>
                   </h4>
                   <p>{exp.Description}</p>
                 </div>

@@ -13,12 +13,13 @@ import { Link } from "react-router-dom";
 // component
 import ResumeTemplete from "./Preview/ResumeTemplete";
 import { FontColorContext } from "../../Context/FontColorContext";
+import { EducationContext } from "../../Context/EducationContext";
 
 const SubMenu = ({ setActive, active }) => {
   const [preview, setPreview] = useState(false);
 
-  const { fontColor } = useContext(FontColorContext);
-  console.log(fontColor);
+  const { education } = useContext(EducationContext);
+  console.log(education);
 
   return (
     <>

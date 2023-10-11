@@ -6,6 +6,10 @@ import styles from "../../Sass/BasicInformation.module.scss";
 // context file
 import { ProjectsContext } from "../../Context/ProjectsContext";
 
+// react toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Projects = () => {
   const [projectName, setProjectName] = useState("");
   const [githubLink, setGithubLink] = useState("");
@@ -27,69 +31,90 @@ const Projects = () => {
     };
 
     setProject((prev) => [...prev, newProject]);
+    toast.success("Project Added Successfully!");
   };
   return (
-    <div className={`${styles.BasicInformation}`}>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div className={styles.flex}>
-          <div className={styles.left}>
-            <label htmlFor="ProjectName">Project Name</label>
-            <br />
-            <input
-              type="text"
-              name="ProjectName"
-              id="ProjectName"
-              placeholder="Project Name"
-              value={projectName}
-              onChange={(e) => setProjectName(e.target.value)}
-            />
+    <>
+      <div className={`${styles.BasicInformation}`}>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className={styles.flex}>
+            <div className={styles.left}>
+              <label htmlFor="ProjectName">Project Name</label>
+              <br />
+              <input
+                type="text"
+                name="ProjectName"
+                id="ProjectName"
+                required
+                placeholder="Project Name"
+                value={projectName}
+                onChange={(e) => setProjectName(e.target.value)}
+              />
+            </div>
+            <div className={styles.right}>
+              <label htmlFor="githubLink">Github Link</label> <br />
+              <input
+                type="text"
+                name="githubLink"
+                id="githubLink"
+                required
+                placeholder="Github Link"
+                value={githubLink}
+                onChange={(e) => setGithubLink(e.target.value)}
+              />
+            </div>
           </div>
-          <div className={styles.right}>
-            <label htmlFor="githubLink">Github Link</label> <br />
-            <input
-              type="text"
-              name="githubLink"
-              id="githubLink"
-              placeholder="Github Link"
-              value={githubLink}
-              onChange={(e) => setGithubLink(e.target.value)}
-            />
-          </div>
-        </div>
 
-        <div className={styles.flex}>
-          <div className={styles.widthFull}>
-            <label htmlFor="liveLink">Live Link</label>
-            <br />
-            <input
-              type="text"
-              name="liveLink"
-              id="liveLink"
-              placeholder="Live Link"
-              value={liveLink}
-              onChange={(e) => setLiveLink(e.target.value)}
-            />
+          <div className={styles.flex}>
+            <div className={styles.widthFull}>
+              <label htmlFor="liveLink">Live Link</label>
+              <br />
+              <input
+                type="text"
+                name="liveLink"
+                id="liveLink"
+                required
+                placeholder="Live Link"
+                value={liveLink}
+                onChange={(e) => setLiveLink(e.target.value)}
+              />
+            </div>
           </div>
-        </div>
 
-        <div className={styles.flex}>
-          <div className={styles.widthFull}>
-            <label htmlFor="description">Project Description</label> <br />
-            <textarea
-              type="email"
-              name="description"
-              id="description"
-              placeholder="Project Description"
-              value={projectDescription}
-              onChange={(e) =>
-                setProjectDescription(e.target.value)
-              }></textarea>
+          <div className={styles.flex}>
+            <div className={styles.widthFull}>
+              <label htmlFor="description">Project Description</label> <br />
+              <textarea
+                type="email"
+                name="description"
+                id="description"
+                required
+                placeholder="Project Description"
+                value={projectDescription}
+                onChange={(e) =>
+                  setProjectDescription(e.target.value)
+                }></textarea>
+            </div>
           </div>
-        </div>
 
-        <button type="submit">save</button>
-      </form>
-    </div>
+          <button type="submit">save</button>
+        </form>
+      </div>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
+    </>
   );
 };
 
