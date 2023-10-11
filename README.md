@@ -10,8 +10,7 @@
     <li>Education</li>
     <li>Skill</li>
     <li>Projects</li>
-    <li>Achievements</li>
-    <li>Others</li>
+    <li>Languages</li>
 </ul>
 
 ## What you get to customize?
@@ -19,5 +18,6 @@
 <ul>
     <li>All Form Information</li>
     <li>Font Color</li>
-    <li>Section Transfer</li>
 </ul>
+
+## So, why delay create your attractive resume now and download it
